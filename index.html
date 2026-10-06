@@ -1,1 +1,23 @@
-<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#05080d"><title>NEXUS Mobile</title><link rel="stylesheet" href="style.css"></head><body><header><b>NEXUS</b><span id="s">PC OFFLINE</span></header><main><section class="screen"><img id="feed" alt="PC camera stream"></section><section class="controls"><button id="up">▲</button><div><button id="left">◀</button><button id="stop">STOP</button><button id="right">▶</button></div><button id="down">▼</button><label>PC address<input id="pc" placeholder="192.168.1.50:8080"></label><button id="connect">CONNECT</button><button id="estop">EMERGENCY STOP</button><p id="read">Pan 0° • Tilt 90°</p></section></main><script src="app.js"></script></body></html>
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NEXUS PC</title><link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.22.0/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd@2.2.3/dist/coco-ssd.min.js"></script>
+</head><body>
+<header><h1>NEXUS</h1><span>PC CONTROL</span><b id="status">OFFLINE</b></header>
+<main>
+<section class="viewer"><video id="video" autoplay playsinline muted></video><canvas id="cv"></canvas><div id="msg">Start camera</div></section>
+<section class="panel">
+<h2>CAMERA</h2><button id="cam">START CAMERA</button><button id="voice">VOICE ON</button>
+<h2>AI TARGET</h2><input id="target" placeholder="car, cup, bottle, chair"><button id="scan">SCAN</button><button id="lock">LOCK</button><button id="unlock">UNLOCK</button>
+<h2>NANO ESP32</h2><input id="nano" placeholder="192.168.1.100"><button id="connect">CONNECT</button>
+<h2>PAN / TILT</h2>
+<div class="pad"><button data-c="up">▲</button><button data-c="left">◀</button><button id="stop">STOP</button><button data-c="right">▶</button><button data-c="down">▼</button></div>
+<label>Pan speed <input id="ps" type="range" min="20" max="500" value="180"></label>
+<label>Tilt speed <input id="ts" type="range" min="5" max="90" value="35"></label>
+<div class="readout">Pan: <b id="pan">0</b>° | Tilt: <b id="tilt">90</b>°</div>
+<button id="estop" class="danger">EMERGENCY STOP</button>
+<p id="ai">AI: not loaded</p>
+</section>
+</main>
+<script src="app.js"></script></body></html>
